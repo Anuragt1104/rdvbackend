@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mailer.css' %}">
+    <title>Past Mails | Rendezvous 2023</title>
+</head>
+<body>
+    <h2>Past Mails</h2>
+    <table>
+        <tr>
+            <th>S.No.</th>
+            <th>Scheduled By</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Email Count</th>
+            <th>Success</th>
+            <th>Failed</th>
+            <th>Logfile</th>
+        </tr>
+        {% for mail in mails %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{mail.createdBy.username}}</td>
+            <td>{{mail.date|date:"d b Y"}}</td>
+            <td>{{mail.subject}}</td>
+            <td>{{mail.message|linebreaks}}</td>
+            <td>{{mail.mailCount}}</td>
+            <td>{{mail.success}}</td>
+            <td>{{mail.failed}}</td>
+            <td><a href="https://rdv-bucket.s3.amazonaws.com/{{mail.logFile}}" target="_blank">Download</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

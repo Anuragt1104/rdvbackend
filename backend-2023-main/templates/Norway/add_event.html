@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/norway.css' %}">
+    <title>Add Event - Rendezvous'23</title>
+</head>
+<body>
+    {% if success %}
+    <p class="message-box">Event Added Successfully</p>
+    {% endif %}
+    <h2>Add Event</h2>
+    <form action="/norway/add_event/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <span class="form-input-heading">Event Name</span>
+        <input type="text" name="title" placeholder="Title" required>
+        <span class="form-input-heading">Event Poster</span>
+        <input type="file" name="poster" accept="image/*" required>
+        <span class="form-input-heading">Event Description</span>
+        <textarea name="description" placeholder="Description" required></textarea>
+        <textarea name="prizes" placeholder="Prizes" required></textarea>
+        <span class="form-input-heading">Event Mode</span>
+        <select name="type" id="type" required>
+            <option value="Competitive">Competitive</option>
+            <option value="Non-Competitive">Non-Competitive</option>
+        </select>
+        <span class="form-input-heading">Event Location</span>
+        <input type="text" name="location" placeholder="Event Location (e.g. LH121)" required>
+        <span class="form-input-heading">Application Deadline</span>
+        <input type="date" name="deadline" placeholder="Application Deadline" required>
+        <span class="form-input-heading">Event Start Date</span>
+        <input type="date" name="date" placeholder="Event Date" required>
+        <span class="form-input-heading">Event Start Time</span>
+        <input type="time" name="time" placeholder="Event Time" required>
+        <span class="form-input-heading">Team Size</span>
+        <input type="text" name="team-size" placeholder="Team Size (e.g. 2 - 4)" required>
+        <span class="form-input-heading">Registration Link</span>
+        <input type="url" name="registration-link" placeholder="Registration Link" required>
+        <span class="form-input-heading">Rulebook</span>
+        <input type="url" name="rulebook" placeholder="Rulebook Link" required>
+        <span class="form-input-heading">Tags</span>
+        <input type="text" name="tags" id="tags" placeholder="Tags (e.g. Dance, Music, etc.)" hidden required>
+        <div class="tag-container">
+            {% for tag in tags %}
+                <p class="tag" onclick="handleTag(this)">{{tag.name}}</p>
+            {% endfor %}
+            <p class="tag create-tag" onclick="create_tag_modal()">Create Tag</p>
+        </div>
+        <input type="submit" value="Save">
+    </form>
+    <div class="create-tag-modal">
+        <div class="create-tag-modal-top">
+            <span class="form-input-heading">Tag Name</span>
+            <input type="text" name="tag-name" id="new-tag-name" placeholder="Tag Name" required>
+            <button class="create-tag-btn" onclick="create_tag()">Create</button>
+        </div>
+    </div>
+    {% if error %}
+        <p class="error-text">{{ error }}</p>
+    {% endif %}
+    <script src="{% static 'js/add_event.js' %}"></script>
+</body>
+</html>

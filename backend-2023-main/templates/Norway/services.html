@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/norway.css' %}">
+    <title>Admin Services - Rendezvous'23</title>
+</head>
+<body>
+    <h2>Admin Services Dashboard</h2>
+    <div class="service-card">
+        <div class="service-card-info">
+            <h3>Add Campus Ambassador</h3>
+            <p>Add a new campus ambassador to the database.</p>
+        </div>
+        <div class="service-card-button">
+            <a href="/norway/add_ca/">Go to Service</a>
+        </div>
+    </div>
+    <div class="service-card">
+        <div class="service-card-info">
+            <h3>Add Event</h3>
+            <p>Add a new event to the database.</p>
+        </div>
+        <div class="service-card-button">
+            <a href="/norway/add_event/">Go to Service</a>
+        </div>
+    </div>
+</body>
+</html>

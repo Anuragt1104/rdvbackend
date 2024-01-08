@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mailer.css' %}">
+    <title>Confirm Send | Rendezvous 2023</title>
+</head>
+<body>
+    <h3>The following email will be sent to <span>{{mail.mailCount}} recipients</span> once confirmed. Make sure everything is correct.</h3>
+    <p class="text-heading">Subject</p>
+    <p class="text-body">{{mail.subject}}</p>
+    <p class="text-heading">Message</p>
+    <div class="text-body-div">{{mail.message|linebreaks}}</div>
+    <form action="/mailer/confirm/{{mail.id}}/" method="post" class="btn-only-form">
+        {% csrf_token %}
+        <input type="submit" name="abort" value="Abort">
+        <input type="submit" name="confirm" value="Confirm Send">
+    </form>
+</body>
+</html>

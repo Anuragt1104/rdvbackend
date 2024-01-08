@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mailer.css' %}">
+    <title>Staff Login - Rendezvous'23</title>
+</head>
+<body>
+    <h2>Staff Login</h2>
+    <form action="/norway/login/" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="submit" value="Login" name="login" id="login">
+    </form>
+    {% if error %}
+        <p class="error-text">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table td {
+            width: 50%;
+            vertical-align: top;
+        }
+        body {
+            line-height: 1.5;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace !important;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <table style="background-color: #F2F2F2;">
+        <tr>
+            <td style="text-align: center; padding: 50px 0 0 0;">
+                <table style="width: min(700px, 100%); background-color: white; margin: auto;">
+                    <tr>
+                        <td style="padding: 50px;">
+                            <table>
+                                <tr>
+                                    <td style="padding-bottom: 20px;">
+                                        Hello,
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 20px;">
+                                        Please use the verification code below on the Rendezvous website:
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 20px; font-size: 28px; font-weight: bold; letter-spacing: 3px;">
+                                        {{otp}} 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 20px;">
+                                        If you didn't request this, you can ignore this email or let us know.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Thanks,
+                                        <br />
+                                        Team Rendezvous
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; padding: 0 0 50px 0;">
+                <table style="width: min(700px, 100%); margin: auto;">
+                    <tr>
+                        <td style="background-color: #E9C77D; padding: 20px;">
+                            <img src="https://rdv-bucket.s3.ap-south-1.amazonaws.com/images/rendezvous-white.svg" style="width: max(50%, 280px); margin: auto;" alt="">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

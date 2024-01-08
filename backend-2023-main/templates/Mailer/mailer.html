@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mailer.css' %}">
+    <title>Mailer | Rendezvous 2023</title>
+</head>
+<body>
+    {% if sent %}
+    {% if sent == "True" %}
+    <p class="message-box">Operation Successful</p>
+    {% elif sent == "False" %}
+    <p class="message-box">Operation Aborted</p>
+    {% endif %}
+    {% endif %}
+    <h2>Create Message</h2>
+    <form action="/mailer/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="subject" placeholder="Subject" required>
+        <select name="senderId" required>
+            <option value="null" selected disabled>Select Sender ID</option>
+            <option value="Rendezvous IIT Delhi <noreply@rendezvousiitd.com>">Rendezvous IIT Delhi &lt;noreply@rendezvousiitd.com&gt;</option>
+            <option value="Rendezvous Publicity <publicity@rendezvousiitd.com>">Rendezvous Publicity &lt;publicity@rendezvousiitd.com&gt;</option>
+            <option value="Rendezvous Marketing <marketing@rendezvousiitd.com>">Rendezvous Marketing &lt;marketing@rendezvousiitd.com&gt;</option>
+            <option value="Rendezvous Events <boardevents@rendezvousiitd.com>">Rendezvous Events &lt;boardevents@rendezvousiitd.com&gt;</option>
+        </select>
+        <textarea name="message" cols="30" rows="10" placeholder="Message (Use [name] where you want the recipient's name)" required></textarea>
+        <span class="form-input-heading">Message Attachment (Optional)</span>
+        <input type="file" name="attachment">
+        <span class="form-input-heading">Recipient Data (CSV)</span>
+        <input type="file" name="datafile" accept=".csv" required>
+        <p class="form-message">
+            See <a href="{% static 'mailer_template.csv' %}" target="_blank">CSV template</a> for file reference
+        </p>
+        <input type="submit" value="Send">
+    </form>
+    {% if error %}
+        <p class="error-text">{{ error }}</p>
+    {% endif %}
+    <p class="mailer-link"><a href="past">See Past Actions</a></p>
+</body>
+</html>

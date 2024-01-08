@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 7vh;
+    text-transform: uppercase;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #D9D9D9;
+    width: max(80%, 300px);
+    margin: 5vh auto;
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+
+.service-card h3 {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.service-card p {
+    font-weight: 300;
+}
+
+.service-card-button {
+    background-color: #F2F2F2;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.service-card-button a {
+    text-decoration: none;
+    color: #000;
+}
+
+.service-card-button:hover {
+    background-color: #D9D9D9;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5vh auto;
+    width: 80%;
+}
+
+form input, form textarea {
+    width: 300px;
+    margin: 1vh 0;
+    padding: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input[type="submit"] {
+    width: 100px;
+    margin: 2vh 0;
+    padding: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #ccc;
+}
+
+form select {
+    width: 316px;
+    margin: 1vh 0;
+    padding: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-text {
+    text-align: center;
+    margin-top: 2vh;
+    color: red;
+    font-size: 0.9rem;
+}
+
+.message-box {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 300px;
+    background-color: rgba(0, 128, 0, 0.3);
+    border: 1px solid green;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px 0;
+    color: rgba(0, 0, 0, 0.7);
+    animation: hideAnimation 1s 3s forwards;
+}
+
+@keyframes hideAnimation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.form-input-heading {
+    font-weight: 300;
+    text-align: left;
+    width: 316px;
+    font-size: 0.9rem;
+}
+
+.tag-container {
+    width: 316px;
+    margin-top: 1vh;
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.selected-tag {
+    background-color: #D9D9D9;
+}
+
+.create-tag {
+    background-color: #10405D;
+    color: white;
+}
+
+.create-tag::before {
+    content: "+";
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.create-tag-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.create-tag-modal-top {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.create-tag-modal-top input {
+    width: 96%;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-tag-modal-top button {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}

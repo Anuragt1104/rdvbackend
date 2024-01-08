@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/norway.css' %}">
+    <title>Add Campus Ambassador - Rendezvous'23</title>
+</head>
+<body>
+    {% if success %}
+    <p class="message-box">CA Added Successfully</p>
+    {% endif %}
+    <h2>Add Campus Ambassador</h2>
+    <form action="/norway/add_ca/" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <select name="college_state" id="college_state" onchange="stateSelected()" required>
+            <option value="0" selected disabled>Select College State</option>
+            {% for state in state_list %}
+                <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+        </select>
+        <select name="college_city" id="college_city" onchange="citySelected()" hidden required>
+            <option value="0" selected disabled>Select College City</option>
+        <input list="college_id" name="college_id" placeholder="College ID" id="college_id_input" onchange="checkIfCollegeIDinDatalist()" hidden required>
+        <datalist id="college_id">
+        </datalist> 
+        <input type="url" name="instagram" placeholder="Instagram Profile Link" required>
+        <input type="url" name="linkedin" placeholder="LinkedIn Profile Link" required>
+        <input type="submit" value="Save">
+    </form>
+    {% if error %}
+        <p class="error-text">{{ error }}</p>
+    {% endif %}
+    <script src="{% static 'js/add_ca.js' %}"></script>
+</body>
+</html>
